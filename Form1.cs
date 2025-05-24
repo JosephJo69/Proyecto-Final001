@@ -18,12 +18,12 @@ namespace Proyecto001_WF
             string prompt = TB_Prompt.Text;
             if (string.IsNullOrEmpty(prompt))
             {
-                MessageBox.Show("El prompt no puede estar vacÌo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El prompt no puede estar vac√≠o.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // 1. Enviar prompt a la API de Gemini
-            string apiKey = "AIzaSyCmjIQK4RoPzvjxxepC3hBiEgTLaMkIe1k";
+            string apiKey = "API-KEY";
             string respuestaGemini = await EnviarPromptAGemini(apiKey, prompt);
 
             string textoRespuesta = ExtraerTextoGemini(respuestaGemini);
@@ -42,13 +42,13 @@ namespace Proyecto001_WF
             ppt.CrearDocumentoPowerPoint(rutaPptx, textoRespuesta);
 
             // (Opcional) Mostrar mensaje y abrir el archivo
-            MessageBox.Show($"Respuesta de Gemini guardada en: {rutaPptx}", "InformaciÛn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Respuesta de Gemini guardada en: {rutaPptx}", "Informaci√≥n", MessageBoxButtons.OK, MessageBoxIcon.Information);
             AbrirArchivo(rutaPptx);
             
 
-            MessageBox.Show($"Respuesta de Gemini guardada en: {rutaWord}", "InformaciÛn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Respuesta de Gemini guardada en: {rutaWord}", "Informaci√≥n", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // 4. Abrir el archivo Word autom·ticamente
+            // 4. Abrir el archivo Word autom√°ticamente
             AbrirArchivo(rutaWord);
         }
 
@@ -98,7 +98,7 @@ namespace Proyecto001_WF
                     .GetProperty("text")
                     .GetString();
 
-                return text ?? "No se encontrÛ texto en la respuesta.";
+                return text ?? "No se encontr√≥ texto en la respuesta.";
             }
             catch
             {
@@ -138,7 +138,7 @@ namespace Proyecto001_WF
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"No se pudo abrir el archivo autom·ticamente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No se pudo abrir el archivo autom√°ticamente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
